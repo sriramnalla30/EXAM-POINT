@@ -1,0 +1,23 @@
+<!-- src/main/resources/templates/editExamPage.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Exam</title>
+</head>
+<body>
+    <h1>Edit Exam</h1>
+    <form th:action="@{/editExam/{examId}(examId=${exam.id})}" th:object="${exam}" method="post">
+        <label for="title">Exam Title:</label>
+        <input type="text" th:field="*{title}" id="title" /><br />
+
+        <label>Questions:</label>
+        <ul>
+            <li th:each="question : ${questions}">
+                <span th:text="${question}"></span>
+            </li>
+        </ul>
+
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
